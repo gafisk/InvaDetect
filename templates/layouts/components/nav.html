@@ -1,0 +1,9 @@
+<ul>
+  <li>
+    <a href="{{ url_for('index' ) }}" class="{% if request.path == url_for('index') %}active{% endif %}">Home</a>
+  </li>
+  <li>
+    <a href="{{ url_for('prediksi' ) }}"
+      class="{% if request.path == url_for('prediksi') %}active{% endif %}">Prediksi</a>
+  </li>
+</ul>

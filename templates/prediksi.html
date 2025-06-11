@@ -1,0 +1,182 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} Prediksi - Page {% endblock %}
+
+{% block content %}
+<section id="services" class="services section">
+    <div class="container section-title" data-aos="fade-up">
+        <br>
+        <br>
+        <p>Cek Kandidiasis Invasif<br></p>
+    </div>
+    <div class="container">
+        <div class="row gy-4">
+            <form id="predictionForm" action="{{ url_for('prediksi') }}" method="post">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p1" class="form-label">Usia</label>
+                        <input type="number" class="form-control" id="p1" name="p1"
+                            placeholder="Masukkan Umur dalam Tahun">
+                    </div>
+                    <div class="col-md-6">
+                        <label for=p2" class="form-label">Jenis Kelamin</label>
+                        <select class="form-control" id="p2" name="p2">
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="1">Laki-laki</option>
+                            <option value="0">Perempuan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p3" class="form-label">Penggunaan Antibiotik</label>
+                        <select class="form-control" id="p3" name="p3">
+                            <option value="">Pilih Jenis Penggunaan</option>
+                            <option value="1">Tunggal</option>
+                            <option value="0">Kombinasi</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p4" class="form-label">Jumlah Alat Medis Invasif</label>
+                        <select class="form-control" id="p4" name="p4">
+                            <option value="">Pilih Jumlah Alat Medis Invasif</option>
+                            <option value="0">&le; 4</option>
+                            <option value="1">&gt; 4</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="p5" class="form-label">Jenis Alat Medis Invasif</label>
+                    <select class="form-control" id="p5" name="p5[]" multiple>
+                        <option value="kateter_iv">Kateter IV</option>
+                        <option value="kateter_urine">Kateter Urine</option>
+                        <option value="ngt">NGT</option>
+                        <option value="ogt">OGT</option>
+                        <option value="ett">ETT</option>
+                        <option value="cvc">CVC</option>
+                        <option value="drain">Drain</option>
+                    </select>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p6" class="form-label">Penggunaan CVC</label>
+                        <select class="form-control" id="p6" name="p6">
+                            <option value="">Pilih Jenis Penggunaan</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p7" class="form-label">Lama Penggunaan CVC</label>
+                        <input type="number" class="form-control" id="p7" name="p7"
+                            placeholder="Masukkan Lama Penggunaan CVC dalam Hari">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p8" class="form-label">Sepsis</label>
+                        <select class="form-control" id="p8" name="p8">
+                            <option value="">Pilih Sepsis</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p9" class="form-label">Total Perenteral Nutrition</label>
+                        <select class="form-control" id="p9" name="p9">
+                            <option value="">Pilih Total Perenteral</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p10" class="form-label">Multifokal kolonisasi Candida</label>
+                        <select class="form-control" id="p10" name="p10">
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p11" class="form-label">Riwayat pembedahan gastrointestinal</label>
+                        <select class="form-control" id="p11" name="p11">
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p12" class="form-label">Lama Rawat</label>
+                        <input type="number" class="form-control" id="p12" name="p12"
+                            placeholder="Masukkan Lama Rawat dalam Hari">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p13" class="form-label">Riwayat perawatan di RS sebelumnya</label>
+                        <select class="form-control" id="p13" name="p13">
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="p14" class="form-label">Riwayat Penyakit Penyerta</label>
+                        <select class="form-control" id="p14" name="p14">
+                            <option value="">Pilih Salah Satu</option>
+                            <option value="0">Keganasan</option>
+                            <option value="1">Autoimun</option>
+                            <option value="2">Diabetes Melitus Tipe 2</option>
+                            <option value="3">HIV</option>
+                            <option value="4">Tidak ada / Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="p15" class="form-label">Konsentrasi Beta-D-Glukan</label>
+                        <input type="number" class="form-control" id="p15" name="p15"
+                            placeholder="Masukkan dalam Satuan pg/ml" step="any">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</section><!-- /Services Section -->
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#p5').select2({
+            placeholder: "Pilih Jenis Alat Medis",
+            allowClear: true
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        {% if error or prediction %}
+        var modal = new bootstrap.Modal(document.getElementById("prediksiModal"));
+        modal.show();
+        {% endif %}
+    });
+</script>
+
+{% endblock %}
